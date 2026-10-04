@@ -36,7 +36,9 @@ This generates the following Blurhash URL with placeholder data embedded. The bo
 
 <code>https:<span>//blurhash</span>.link/image/<strong>aW1nIzQyITk2MCE3MjAhODY5NmFjIUFVRlpULiVMX04lMQ</strong>/image.jpg</code>
 
-You can configure your own domain to serve Blurhash URLs. See [Using Your Own Domain](#using-your-own-domain) for more details.
+Paste a generated URL into a browser to inspect it on [blurhash.link](https://blurhash.link), a free landing page and debug tool for Blurhash URLs that renders the decoded placeholder data.
+
+You can also configure your own domain to serve Blurhash URLs. See [Using Your Own Domain](#using-your-own-domain) for more details.
 
 ## Anatomy of a Blurhash URL
 
@@ -140,6 +142,8 @@ export const handler = (request: Request) => {
   // Load, serve, or redirect your image as needed
 };
 ```
+
+For a working example of these routes, [blurhash.link](https://blurhash.link) parses incoming Blurhash URLs this way, built on Hono and Cloudflare Workers. Rather than serving images, it renders a details page for the decoded placeholder data.
 
 ## Frequently Asked Questions
 

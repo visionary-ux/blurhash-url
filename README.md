@@ -4,8 +4,8 @@
 
 ## Features
 
-- **URL-powered placeholders**: Image URLs with embedded Blurhash placeholder data; enables rapid-render image placeholders and optimized web vitals (via [`visionary-image`](/https://github.com/visionary-ux/visionary-image), [`visionary-image-js`](/https://github.com/visionary-ux/visionary-image-js)).
-- **Cache-friendly**: Deterministic URLs with path-based encoding improve cache hits across browsers and CDNs.
+- **URL-powered placeholders**: Image URLs with embedded Blurhash placeholder data; enables rapid-render image placeholders and optimized web vitals (via Blurhash URL-compatible image components like [`visionary-image`](https://github.com/visionary-ux/visionary-image), [`visionary-image-js`](https://github.com/visionary-ux/visionary-image-js)).
+- **Cache-friendly**: Deterministic URLs maximize cache hits across browsers and CDNs.
 - **Universal**: Works in browsers, Node.js, and worker environments.
 - **Module support**: Compatible with ES Modules and CommonJS.
 - **Lightweight**: Under 3 kB minzipped.

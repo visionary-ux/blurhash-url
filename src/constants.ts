@@ -46,7 +46,7 @@ export const IMAGE_SIZE_LOOKUP: Record<number, ImageSizeToken> = Object.keys(IMA
 );
 
 /**
- * Charater used to separate Visionary code fields.
- * (This must be a value not used by blurhash/base83 — see here: https://github.com/woltapp/blurhash/blob/master/Algorithm.md#base-83)
+ * Separates the fields of a Visionary code. Uses the ASCII unit separator (U+001F) because it doesn't
+ * appear in URLs or Blurhash/base83 (https://github.com/woltapp/blurhash/blob/master/Algorithm.md#base-83)
  */
-export const V_CODE_SEPARATOR = "!";
+export const V_CODE_SEPARATOR = "\x1F";

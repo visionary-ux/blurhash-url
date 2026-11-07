@@ -12,7 +12,7 @@ describe("visionary-code", () => {
    */
   describe(parseVisionaryCode.name, () => {
     test("parses a barebones code with url and image dimensions only", () => {
-      const code = "cE1uOVohODAwITYwMA";
+      const code = "cE1uOVofODAwHzYwMA";
 
       const fields = parseVisionaryCode(code);
 
@@ -22,7 +22,7 @@ describe("visionary-code", () => {
     });
 
     test("parses a code with image dimensions and background color code", () => {
-      const code = "aW1hZ2U6MTAwMDEhODAwITYwMCEjQkVFRUVG";
+      const code = "aW1hZ2U6MTAwMDEfODAwHzYwMB8jQkVFRUVG";
 
       const fields = parseVisionaryCode(code);
 
@@ -81,7 +81,7 @@ describe("visionary-code", () => {
 
     test("parses alt text when blurhash is omitted", () => {
       const altText = "Butterfly on a purple flower";
-      const code = encodeBase64Url(["image:88592", 800, 600, "#c0ffee", "", altText].join("!"));
+      const code = encodeBase64Url(["image:88592", 800, 600, "#c0ffee", "", altText].join(V_CODE_SEPARATOR));
 
       const fields = parseVisionaryCode(code);
 
@@ -203,7 +203,49 @@ describe("visionary-code", () => {
 
       const visionaryCode = generateVisionaryCode(fields);
 
-      expect(visionaryCode).toBe("NDIhMzAwITMwMCFmZjY2OTk");
+      expect(visionaryCode).toBe("NDIfMzAwHzMwMB9mZjY2OTk");
+    });
+
+    test("round-trips a url and alt text containing `!`", () => {
+      const fields: GenerateBlurhashUrlInput = {
+        altText: "Wow! A double rainbow!",
+        bcc: "be3e3f",
+        blurhash: "A8D+9+}S01S$",
+        sourceHeight: 300,
+        sourceWidth: 400,
+        url: "https://example.com/#!/photos/rainbow!.jpg",
+      };
+
+      const parsed = parseVisionaryCode(generateVisionaryCode(fields) as string);
+
+      expect(parsed?.url).toBe(fields.url);
+      expect(parsed?.sourceWidth).toBe(400);
+      expect(parsed?.sourceHeight).toBe(300);
+      expect(parsed?.blurhash).toBe(fields.blurhash);
+      expect(parsed?.altText).toBe(fields.altText);
+    });
+
+    test("strips the separator from alt text", () => {
+      const code = generateVisionaryCode({
+        altText: `Happy${V_CODE_SEPARATOR}cow`,
+        bcc: "be3e3f",
+        blurhash: "A8D+9+}S01S$",
+        sourceHeight: 100,
+        sourceWidth: 100,
+        url: "I2zUw",
+      });
+
+      expect(parseVisionaryCode(code as string)?.altText).toBe("Happycow");
+    });
+
+    test("rejects a url containing the separator", () => {
+      const result = generateVisionaryCode({
+        sourceHeight: 300,
+        sourceWidth: 300,
+        url: `image${V_CODE_SEPARATOR}42`,
+      });
+
+      expect(result).toBeInstanceOf(Error);
     });
 
     test.each([0, -1, Number.POSITIVE_INFINITY, Number.NaN])(

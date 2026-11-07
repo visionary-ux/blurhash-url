@@ -7,7 +7,7 @@ export const sampleFields = {
 };
 
 export const expectedImageUrl =
-  "https://blurhash.link/image/dmI4N3MxITE2MDAhMTIwMCExMTAwNDQhTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/image.jpg";
+  "https://blurhash.link/image/dmI4N3MxHzE2MDAfMTIwMB8xMTAwNDQfTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/image.jpg";
 
 export const expectedOptionsUrl =
-  "https://blurhash.link/image/dmI4N3MxITE2MDAhMTIwMCExMTAwNDQhTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/4k,webp/fruit.jpg";
+  "https://blurhash.link/image/dmI4N3MxHzE2MDAfMTIwMB8xMTAwNDQfTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/4k,webp/fruit.jpg";

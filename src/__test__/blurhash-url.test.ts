@@ -16,7 +16,7 @@ const sampleFields: GenerateBlurhashUrlInput = {
 };
 
 const sampleUrl =
-  "https://blurhash.link/image/dmI4N3MxITE2MDAhMTIwMCExMTAwNDQhTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/strawberries.jpg";
+  "https://blurhash.link/image/dmI4N3MxHzE2MDAfMTIwMB8xMTAwNDQfTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/strawberries.jpg";
 
 describe("blurhash-url", () => {
   describe(parseBlurhashUrl.name, () => {
@@ -29,7 +29,7 @@ describe("blurhash-url", () => {
 
     test("parses a Blurhash URL with options", () => {
       const urlWithOptions =
-        "https://blurhash.link/image/dmI4N3MxITE2MDAhMTIwMCExMTAwNDQhTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/4k,avif/strawberries.jpg";
+        "https://blurhash.link/image/dmI4N3MxHzE2MDAfMTIwMB8xMTAwNDQfTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/4k,avif/strawberries.jpg";
 
       const { fields, options } = parseBlurhashUrl(urlWithOptions)!;
 
@@ -38,7 +38,6 @@ describe("blurhash-url", () => {
       expect(options.format).toBe(ImageFormatToken.AVIF);
       expect(Object.keys(options).length).toBe(2);
     });
-
     test("handles a bad input", () => {
       const response = parseBlurhashUrl(null as unknown as string);
 
@@ -51,7 +50,7 @@ describe("blurhash-url", () => {
       const url = generateBlurhashUrl(sampleFields);
 
       const expectedUrl =
-        "https://blurhash.link/image/dmI4N3MxITE2MDAhMTIwMCExMTAwNDQhTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/image.jpg";
+        "https://blurhash.link/image/dmI4N3MxHzE2MDAfMTIwMB8xMTAwNDQfTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/image.jpg";
 
       expect(url).toBe(expectedUrl);
     });
@@ -62,7 +61,7 @@ describe("blurhash-url", () => {
       });
 
       const expectedUrl =
-        "https://cdn.iss.space/image/dmI4N3MxITE2MDAhMTIwMCExMTAwNDQhTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/image.jpg";
+        "https://cdn.iss.space/image/dmI4N3MxHzE2MDAfMTIwMB8xMTAwNDQfTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/image.jpg";
 
       expect(url).toBe(expectedUrl);
     });
@@ -73,7 +72,7 @@ describe("blurhash-url", () => {
       });
 
       const expectedUrl =
-        "https://blurhash.link/image/dmI4N3MxITE2MDAhMTIwMCExMTAwNDQhTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/download/image.jpg";
+        "https://blurhash.link/image/dmI4N3MxHzE2MDAfMTIwMB8xMTAwNDQfTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/download/image.jpg";
 
       expect(url).toBe(expectedUrl);
     });
@@ -85,7 +84,7 @@ describe("blurhash-url", () => {
       });
 
       const expectedUrl =
-        "https://blurhash.link/image/dmI4N3MxITE2MDAhMTIwMCExMTAwNDQhTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/download,full/image.jpg";
+        "https://blurhash.link/image/dmI4N3MxHzE2MDAfMTIwMB8xMTAwNDQfTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/download,full/image.jpg";
 
       expect(url).toBe(expectedUrl);
     });
@@ -98,7 +97,7 @@ describe("blurhash-url", () => {
       });
 
       const expectedUrl =
-        "https://blurhash.link/image/dmI4N3MxITE2MDAhMTIwMCExMTAwNDQhTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/4k,download/flowers.jpg";
+        "https://blurhash.link/image/dmI4N3MxHzE2MDAfMTIwMB8xMTAwNDQfTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/4k,download/flowers.jpg";
 
       expect(url).toBe(expectedUrl);
     });
@@ -109,7 +108,7 @@ describe("blurhash-url", () => {
       });
 
       const expectedUrl =
-        "https://blurhash.link/image/dmI4N3MxITE2MDAhMTIwMCExMTAwNDQhTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/strawberry-fields-vibrant-red.jpg";
+        "https://blurhash.link/image/dmI4N3MxHzE2MDAfMTIwMB8xMTAwNDQfTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/strawberry-fields-vibrant-red.jpg";
 
       expect(url).toBe(expectedUrl);
     });
@@ -122,7 +121,7 @@ describe("blurhash-url", () => {
       });
 
       const expectedUrl =
-        "https://blurhash.link/image/aHR0cHM6Ly9pc3Muc3BhY2UvZWFydGguanBnITQwMCEzMDA/image.jpg";
+        "https://blurhash.link/image/aHR0cHM6Ly9pc3Muc3BhY2UvZWFydGguanBnHzQwMB8zMDA/image.jpg";
 
       expect(url).toBe(expectedUrl);
     });
@@ -153,7 +152,7 @@ describe("blurhash-url", () => {
   describe(parseVisionaryString.name, () => {
     test("parses a Blurhash URL", () => {
       const inputString =
-        "https://blurhash.link/image/dmI4N3MxITE2MDAhMTIwMCExMTAwNDQhTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/sm,webp/fruit.jpg";
+        "https://blurhash.link/image/dmI4N3MxHzE2MDAfMTIwMB8xMTAwNDQfTENESllOOUZ4R19NX04lTCVNJU00b35wdFJJQQ/sm,webp/fruit.jpg";
 
       const { fields, options } = parseVisionaryString(inputString)!;
 

@@ -1,6 +1,6 @@
 {
   "name": "blurhash-url",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "description": "Image URLs with built-in Blurhash placeholders. Renders at first paint, eliminating Cumulative Layout Shift and improving Core Web Vitals.",
   "type": "module",
   "main": "./dist/blurhash-url.cjs",

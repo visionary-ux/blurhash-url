@@ -13,6 +13,9 @@ export const generateVisionaryCode = (fields: GenerateBlurhashUrlInput): string 
   if (!url || !isValidImageDimension(sourceWidth) || !isValidImageDimension(sourceHeight)) {
     return new Error("Cannot construct visionary code: missing required url/width/height");
   }
+  if (url.includes(V_CODE_SEPARATOR)) {
+    return new Error("Cannot construct visionary code: url contains the field separator (U+001F)");
+  }
 
   const visionaryComponents: Array<string | number> = [url, sourceWidth, sourceHeight];
 
@@ -24,8 +27,9 @@ export const generateVisionaryCode = (fields: GenerateBlurhashUrlInput): string 
     return joinAndEncodeComponents(visionaryComponents);
   }
   visionaryComponents.push(blurhash);
-  if (altText) {
-    visionaryComponents.push(altText);
+  const sanitizedAltText = altText?.split(V_CODE_SEPARATOR).join("");
+  if (sanitizedAltText) {
+    visionaryComponents.push(sanitizedAltText);
   }
   return joinAndEncodeComponents(visionaryComponents);
 };
